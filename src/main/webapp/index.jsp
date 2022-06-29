@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -23,24 +23,24 @@
 		<%
 		String strcPage = request.getParameter("strcPage");
 
-				BoardItemService boardItemService = new BoardItemServiceImpl();
-				String cPage = boardItemService.checkcPage(strcPage);
+		BoardItemService boardItemService = new BoardItemServiceImpl();
+		String cPage = boardItemService.checkcPage(strcPage);
 
-				List<StockItem> boardItems = boardItemService.readAll(cPage);
-				int rowCount = boardItemService.getRowCount();
-				Pagination pagination = boardItemService.getPagination(cPage);
+		List<BoardItem> boardItems = boardItemService.readAll(cPage);
+		int rowCount = boardItemService.getRowCount();
+		Pagination pagination = boardItemService.getPagination(cPage);
 
-				ServletContext context = getServletContext();
-				context.setAttribute("rowCount", rowCount);
-				context.setAttribute("boardItems", boardItems);
-				context.setAttribute("pagination", pagination);
+		ServletContext context = getServletContext();
+		context.setAttribute("rowCount", rowCount);
+		context.setAttribute("boardItems", boardItems);
+		context.setAttribute("pagination", pagination);
 		%>
 		<c:if test="${rowCount == 0}">
 			<tr>
 				<td colspan="3" style="text-align: center">게시글이 없습니다.</td>
 			</tr>
 		</c:if>
-		
+
 		<c:forEach var="boardItem" items="${boardItems}">
 			<tr>
 				<td style="text-align: center">${boardItem.id}</td>

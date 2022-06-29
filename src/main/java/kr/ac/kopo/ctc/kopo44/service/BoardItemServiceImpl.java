@@ -31,13 +31,13 @@ public class BoardItemServiceImpl implements BoardItemService{
 		// 전체 목록 조회 
 		int startIndex = ((pagination.getcPage() - 1) * pagination.getCountPerPage() + 1);
 		
-		List<BoardItem> scoreItem = boardItemDao.readAll(startIndex, countPerPage);
+		List<BoardItem> boardItem = boardItemDao.readAll(startIndex, countPerPage);
 
 		// 전체 목록 조회 결과랑 페이지 네이션을 dto로 묶어서 반환
 //		ScoreItemDto scoreItemDto = new ScoreItemDto(scoreItem,
 //				getPagination(cPage, COUNT_PER_PAGE, PAGE_SIZE, TOTAL_COUNT));
 //		
-		return scoreItem;
+		return boardItem;
 	}
 
 	@Override

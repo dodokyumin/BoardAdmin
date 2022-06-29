@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -15,9 +15,9 @@
 <body>
 	<%
 	BoardItemService boardItemService = new BoardItemServiceImpl();
-	
+
 	Boolean result = boardItemService.boardItemDeleteAll();
-	
+
 	ServletContext context = getServletContext();
 	context.setAttribute("result", result);
 	%>

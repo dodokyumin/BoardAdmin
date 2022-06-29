@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -14,17 +14,16 @@
 </head>
 <body>
 	<%
+			request.setCharacterEncoding("UTF-8");
+			String title = request.getParameter("newTitle");
+			String content = request.getParameter("newContent");
+			
+			BoardItemService boardItemService = new BoardItemServiceImpl();
+			
+			Boolean result = boardItemService.boardItemCreateOne(title, content);
 
-	request.setCharacterEncoding("UTF-8");
-	String title = request.getParameter("newTitle");
-	String content = request.getParameter("newContent");
-	
-	BoardItemService boardItemService = new BoardItemServiceImpl();
-	
-	Boolean result = boardItemService.boardItemCreateOne(title, content);
-
-	ServletContext context = getServletContext();
-	context.setAttribute("result", result);
+			ServletContext context = getServletContext();
+			context.setAttribute("result", result);
 	%>
 	<script>
 	if(${result}){

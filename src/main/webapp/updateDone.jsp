@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -14,17 +14,14 @@
 </head>
 <body>
 	<%
-	p
-
-		
-		BoardItemService boardItemService = new BoardItemServiceImpl();
+	BoardItemService boardItemService = new BoardItemServiceImpl();
 
 		request.setCharacterEncoding("UTF-8");
 		String strId = request.getParameter("id");
 		String title = request.getParameter("newTitle");
 		String content = request.getParameter("newContent");
 		
-		StockItem boardItem = boardItemService.boardItemUpdateOne(title, content, strId);
+		BoardItem boardItem = boardItemService.boardItemUpdateOne(title, content, strId);
 
 		ServletContext context = getServletContext();
 		context.setAttribute("boardItem", boardItem);

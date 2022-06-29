@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -13,16 +13,14 @@
 <title>게시글 삭제 완료</title>
 </head>
 <body>
-	<%
-	
-	BoardItemService boardItemService = new BoardItemServiceImpl();
+	<%	BoardItemService boardItemService = new BoardItemServiceImpl();
 
-	String strId = request.getParameter("id");
-	
-	Boolean result = boardItemService.boardItemDeleteOne(strId);
-	
-	ServletContext context = getServletContext();
-	context.setAttribute("result", result);
+			String strId = request.getParameter("id");
+			
+			Boolean result = boardItemService.boardItemDeleteOne(strId);
+			
+			ServletContext context = getServletContext();
+			context.setAttribute("result", result);
 	%>
 	<script>
 	if(${result}){

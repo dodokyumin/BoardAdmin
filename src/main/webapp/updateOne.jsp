@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -14,19 +14,17 @@
 </head>
 <body>
 	<%
-	p
+	String id = request.getParameter("id");
 
-		String id = request.getParameter("id");
+	BoardItemService boardItemService = new BoardItemServiceImpl();
+	String cPage = boardItemService.checkcPage(id);
 
-		BoardItemService boardItemService = new BoardItemServiceImpl();
-		String cPage = boardItemService.checkcPage(id);
+	BoardItem boardItem = boardItemService.readOne(id);
+	String newDate = boardItemService.newDate();
+	pageContext.setAttribute("newDate", newDate);
 
-		StockItem boardItem = boardItemService.readOne(id);
-		String newDate = boardItemService.newDate();
-		pageContext.setAttribute("newDate", newDate);
-
-		ServletContext context = getServletContext();
-		context.setAttribute("boardItem", boardItem);
+	ServletContext context = getServletContext();
+	context.setAttribute("boardItem", boardItem);
 	%>
 	<form action="updateDone.jsp" method="post">
 		<table cellspacing=1 width=600 border=1>
@@ -38,7 +36,7 @@
 			<tr>
 				<td width=100px>제목</td>
 				<td><input type="text" value="${boardItem.title}"
-					name="newTitle" pattern='^[가-힣a-zA-Z\s?~!@#$%^&*()/]+$' required></td>
+					name="newTitle" pattern='^[가-힣a-zA-Z0-9\s?~!@#$%^&*()/]+$' required></td>
 			</tr>
 			<tr>
 				<td width=100px>일자</td>

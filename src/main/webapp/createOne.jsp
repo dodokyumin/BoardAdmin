@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemServiceImpl"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.BoardItemService"%>
-<%@page import="kr.ac.kopo.ctc.kopo44.domain.StockItem"%>
+<%@page import="kr.ac.kopo.ctc.kopo44.domain.BoardItem"%>
 <%@page import="kr.ac.kopo.ctc.kopo44.service.Pagination"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
 			<tr>
 				<td width=100px>제목</td>
 				<td><input type="text" placeholder="제목을 입력하세요." name="newTitle"
-					pattern='^[가-힣a-zA-Z\s?~!@#$%^&*()/]+$' required></td>
+					pattern='^[가-힣a-zA-Z0-9\s?~!@#$%^&*()/]+$' required></td>
 			</tr>
 			<tr>
 				<td width=100px>일자</td>
@@ -39,7 +39,8 @@
 			<tr>
 				<td width=100px>내용</td>
 				<td><textarea style="width: 500px; height: 300px;"
-						name="newContent" placeholder="내용을 입력하세요." pattern='^[가-힣a-zA-Z\s]+$' required></textarea></td>
+						name="newContent" placeholder="내용을 입력하세요."
+						pattern='^[가-힣a-zA-Z\s]+$' required></textarea></td>
 			</tr>
 		</table>
 		<table cellspacing=1 width=400 border=0>
