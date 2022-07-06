@@ -39,7 +39,8 @@
 		</tr>
 		<tr>
 			<td width=100px>내용</td>
-			<td>${boardItem.content}</td>
+			<td><textarea style="width: 500px; height: 300px;"
+						name="newContent" pattern='^[가-힣a-zA-Z]+$' required readonly>${boardItem.content}</textarea></td>
 		</tr>
 	</table>
 	<c:if test="${scoreItem.id != 0}">

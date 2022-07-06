@@ -45,26 +45,25 @@
 			<tr>
 				<td width=100px>내용</td>
 				<td><textarea style="width: 500px; height: 300px;"
-						name="newContent" pattern='^[가-힣a-zA-Z]+$' required>${boardItem.content}</textarea></td>
+						name="newContent" pattern='^[가-힣a-zA-Z]+$' required readonly>${boardItem.content}</textarea></td>
 			</tr>
 		</table>
 		<c:if test="${boardItem.id != 0}">
 			<table cellspacing=1 width=400 border=0>
 				<tr>
-					<td width="200"></td>
-					<td width="100"><p align="center">
+				<td width="300"></td>
+					<td width="100"><input type="submit" value="삭제"
+			onclick="location.href='deleteOne.jsp?id=${boardItem.id}'"></td>
+					<td width="100">
 							<input type="submit" value="수정">
-						</p></td>
-					<td width="100"><p align="center">
+						</td>
+					<td width="100">
 							<input type="button" value="취소"
 								onclick="location.href='readOne.jsp?id=${boardItem.id}'">
-						</p></td>
 				</tr>
 			</table>
 		</c:if>
 	</form>
-	<p align="center">
-		<input type="submit" value="삭제"
-			onclick="location.href='deleteOne.jsp?id=${boardItem.id}'">
+		
 </body>
 </html>
